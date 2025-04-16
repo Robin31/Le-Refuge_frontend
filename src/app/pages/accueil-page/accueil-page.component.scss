@@ -1,0 +1,60 @@
+.acceuil__container {
+  background-color: white;
+}
+
+.acceuil__title {
+  text-align: center;
+  padding-top: 3%;
+  font-size: 3em;
+  color: rgb(56, 56, 55);
+}
+
+h2 {
+  text-align: center;
+  padding-top: 3%;
+  color: rgb(56, 56, 55);
+  font-size: 2em;
+}
+
+.acceuil__présentation {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5em;
+  color: rgb(56, 56, 55);
+  padding-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+
+  p {
+    padding-right: 15%;
+  }
+
+  img {
+    height: 100%;
+    width: 150%;
+  }
+}
+
+.chiffre-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2%;
+  padding-right: 3%;
+  padding-left: 3%;
+}
+
+.chiffre-card {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 28%;
+
+  p {
+    padding-top: 2%;
+  }
+}
+
+h3 {
+  font-size: 1.5em;
+  color: goldenrod;
+}
