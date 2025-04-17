@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'primeicons/primeicons.css';
+
+:root {
+  --p-navigation-item-focus-background: transparent;
+  --p-navigation-item-active-background: transparent;
+  --p-menubar-item-focus-background: transparent;
+  --p-menubar-item-active-background: transparent;
+}
+
+html {
+  background-color: white;
+}

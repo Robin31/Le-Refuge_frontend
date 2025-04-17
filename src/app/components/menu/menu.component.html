@@ -1,0 +1,20 @@
+<p-menubar [model]="items">
+  <ng-template #start>
+    <a [routerLink]="['/']" class="menu-start">
+      <p-image src="assets/LogoRefuge.png" height="33" width="33"></p-image>
+      <h2>Le Refuge</h2>
+    </a>
+  </ng-template>
+  <ng-template #item let-item class="menu-center">
+    @if (item.label) {
+    <a>{{ item.label }}</a>
+    }
+  </ng-template>
+  <ng-template #end>
+    @for (item of endItems; track item) {
+    <button type="button" class="icon-button" (click)="item.command()" (keydown.enter)="item.command()" tabindex="0">
+      <i [class]="item.icon"></i>
+    </button>
+    }
+  </ng-template>
+</p-menubar>
