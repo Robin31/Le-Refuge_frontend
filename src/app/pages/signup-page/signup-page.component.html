@@ -28,9 +28,21 @@
             contenir au moins 6 caractères } @if (loginForm.get('password')?.errors?.['required']) { Le mot de passe est requis } }
           </div>
         </div>
+
+        <div class="input-group">
+          <p-floatlabel variant="on">
+            <input pInputText type="confirmPassword" id="confirmPassword" formControlName="confirmPassword" required />
+            <label for="confirmPassword">Confirmation mot de passe</label>
+          </p-floatlabel>
+          <div class="error">
+            @if (submitted && loginForm.get('confirmPassword')?.invalid) { @if (loginForm.get('confirmPassword')?.errors?.['minlength']) { Le mot de
+            passe doit contenir au moins 6 caractères } @if (loginForm.get('confirmPassword')?.errors?.['required']) { Le mot de passe est requis }
+            @if (loginForm.get('confirmPassword')?.errors?.['passwordMismatch']) { Les mots de passe ne correspondent pas } }
+          </div>
+        </div>
         <p-button type="submit" label="Connexion" />
         <div>
-          <p class="register-text">Vous n'avez pas de compte ? <a [routerLink]="['/signup']"> S'enregistrer</a></p>
+          <p class="register-text">Vous avez déjà un compte ? <a [routerLink]="['/login']"> Se connecter</a></p>
         </div>
       </form>
     </div>

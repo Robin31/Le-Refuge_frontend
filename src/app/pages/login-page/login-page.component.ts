@@ -33,7 +33,6 @@ export class LoginPageComponent implements OnInit {
 
     if (this.loginForm.valid) {
       console.log('Form Submitted!', this.loginForm.value);
-      // Here you can add your login logic, like calling an API
     } else {
       console.log('Form is invalid');
     }

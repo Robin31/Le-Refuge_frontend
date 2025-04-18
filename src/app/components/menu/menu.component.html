@@ -13,7 +13,11 @@
   <ng-template #end>
     @for (item of endItems; track item) {
     <button type="button" class="icon-button" (click)="item.command()" (keydown.enter)="item.command()" tabindex="0">
+      @if (item.icon) {
       <i [class]="item.icon"></i>
+      } @if (!item.icon) {
+      <span>{{ item.label }}</span>
+      }
     </button>
     }
   </ng-template>
