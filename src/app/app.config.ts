@@ -4,7 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { providePrimeNG } from 'primeng/config';
-import Aura from '@primeng/themes/aura';
+import { myPreset } from './lara.theme';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,7 +13,10 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     providePrimeNG({
       theme: {
-        preset: Aura,
+        preset: myPreset,
+        options: {
+          colorScheme: 'light', // Définit le thème light
+        },
       },
     }),
   ],

@@ -43,32 +43,26 @@
   justify-content: flex-end;
 }
 
-::ng-deep .p-menubar-root .p-menubar .menu-center {
-  flex-grow: 2;
-  text-align: center;
-}
+// ::ng-deep .p-menubar-root .p-menubar .menu-center {
+//   flex-grow: 2;
+//   text-align: center;
+// }
 
-::ng-deep .p-menubar {
-  background: linear-gradient(90deg, rgb(92, 217, 129) 43%, rgb(47, 184, 88) 73%, rgb(17, 120, 40) 100%) !important;
-}
+// ::ng-deep .p-menubar {
+//   // background: linear-gradient(90deg, rgb(92, 217, 129) 43%, rgb(47, 184, 88) 73%, rgb(17, 120, 40) 100%) !important;
+//   border: none !important;
+//   height: 3rem !important;
+//   border-radius: 0 !important;
+// }
 
-::ng-deep p-image img {
-  background-color: transparent !important;
-}
+// ::ng-deep .p-menubar .p-menuitem-link:hover,
+// ::ng-deep .p-menubar .p-menuitem-link:focus,
+// ::ng-deep .p-menubar .p-menuitem-link.p-highlight {
+//   background-color: transparent !important;
+//   box-shadow: none !important;
+// }
 
-:host ::ng-deep {
-  --p-navigation-item-focus-background: transparent !important;
-  --p-navigation-item-active-background: transparent !important;
-}
-
-::ng-deep .p-menubar .p-menuitem-link:hover,
-::ng-deep .p-menubar .p-menuitem-link:focus,
-::ng-deep .p-menubar .p-menuitem-link.p-highlight {
-  background-color: transparent !important;
-  box-shadow: none !important;
-}
-
-::ng-deep .p-menubar-item:not(.p-disabled) > .p-menubar-item-content:hover {
-  background-color: transparent !important;
-  color: whitesmoke !important; // ou ta couleur de texte
-}
+// ::ng-deep .p-menubar-item:not(.p-disabled) > .p-menubar-item-content:hover {
+//   background-color: transparent !important;
+//   color: whitesmoke !important; // ou ta couleur de texte
+// }
