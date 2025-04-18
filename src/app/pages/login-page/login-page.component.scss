@@ -10,12 +10,6 @@
   box-sizing: border-box;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
 .login-container {
   display: grid;
   grid-template-columns: 100%;
@@ -42,8 +36,11 @@ img {
     justify-self: center;
 
     img {
-      width: 390px;
-      margin-top: 0;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 1rem;
+      overflow: hidden;
     }
   }
 

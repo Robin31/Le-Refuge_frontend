@@ -13,7 +13,7 @@
             <label for="email">Email</label>
           </p-floatlabel>
           <div class="error">
-            @if (submitted && loginForm.get('email')?.invalid){ @if (loginForm.get('email')?.errors?.['email']) { Adresse email requise } @if
+            @if (submitted && loginForm.get('email')?.invalid){ @if (loginForm.get('email')?.errors?.['required']) { Adresse email requise } @if
             (loginForm.get('email')?.errors?.['email']){ Adresse email invalide } }
           </div>
         </div>

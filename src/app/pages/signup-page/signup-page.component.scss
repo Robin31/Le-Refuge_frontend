@@ -42,8 +42,11 @@ img {
     justify-self: center;
 
     img {
-      width: 390px;
-      margin-top: 0;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 1rem;
+      overflow: hidden;
     }
   }
 
