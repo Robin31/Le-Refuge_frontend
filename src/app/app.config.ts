@@ -15,7 +15,7 @@ export const appConfig: ApplicationConfig = {
       theme: {
         preset: myPreset,
         options: {
-          colorScheme: 'light', // Définit le thème light
+          colorScheme: 'light',
         },
       },
     }),

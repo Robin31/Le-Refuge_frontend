@@ -1,0 +1,110 @@
+// :host ::ng-deep .p-inputtext,
+// :host ::ng-deep .p-password-input {
+//   background-color: #ffffff !important;
+//   color: #000 !important;
+// }
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.login-container {
+  display: grid;
+  grid-template-columns: 100%;
+  height: 100vh;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  overflow: hidden;
+
+  .login-box {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    justify-content: center;
+    align-items: center;
+    margin-left: 10rem;
+  }
+
+  .image-section {
+    display: flex;
+    width: 600px;
+    height: 500px;
+    background-color: #f6f7f2;
+    border-radius: 1rem;
+    padding-left: 1rem;
+    justify-self: center;
+
+    img {
+      width: 390px;
+      margin-top: 0;
+    }
+  }
+
+  .form-section {
+    position: relative;
+    height: 368px;
+    width: 400px;
+  }
+
+  form {
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+    background-color: #f6f7f2;
+    padding: 2rem 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 8px 20px #646b3c;
+    left: -11rem;
+    bottom: -2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #646b3c;
+  }
+
+  .input-group {
+    display: grid;
+    grid-column: 1 / -1;
+    width: 100%;
+    // grid-template-columns: max-content 1fr;
+    column-gap: 0.5rem;
+    padding: 0rem 1rem;
+    background-color: #f6f7f2;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  p,
+  a {
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #646b3c;
+  }
+
+  a {
+    cursor: pointer;
+    font-size: 1rem;
+    color: #393e20;
+  }
+}
+
+.error {
+  min-height: 1.5em;
+  font-size: 0.85em;
+  color: red;
+  margin-top: 0.25rem;
+}

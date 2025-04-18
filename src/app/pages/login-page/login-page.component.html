@@ -5,26 +5,34 @@
       <img src="assets/chiens.png" alt="chiens" />
     </div>
     <div class="form-section">
-      <h2>Se connecter</h2>
-
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h2>Se connecter</h2>
         <div class="input-group">
-          <input pInputText type="email" id="email" formControlName="email" placeholder="Email" required />
+          <p-floatlabel variant="on">
+            <input pInputText type="email" id="email" formControlName="email" required />
+            <label for="email">Email</label>
+          </p-floatlabel>
           <div class="error">
-            @if (loginForm.get('email')?.errors?.['required']){ Adresse email requise } @if (loginForm.get('email')?.errors?.['email']){ Adresse email
-            invalide }
+            @if (submitted && loginForm.get('email')?.invalid){ @if (loginForm.get('email')?.errors?.['email']) { Adresse email requise } @if
+            (loginForm.get('email')?.errors?.['email']){ Adresse email invalide } }
           </div>
         </div>
+
         <div class="input-group">
-          <input pInputText type="password" id="password" formControlName="password" placeholder="Mot de passe" required />
+          <p-floatlabel variant="on">
+            <input pInputText type="password" id="password" formControlName="password" required />
+            <label for="password">Mot de passe</label>
+          </p-floatlabel>
           <div class="error">
-            @if (loginForm.get('password')?.errors?.['minlength']){ Le mot de passe doit contenir au moins 6 caractères } @if
-            (loginForm.get('password')?.errors?.['required']) { Le mot de passe est requis }
+            @if (submitted && loginForm.get('password')?.invalid) { @if (loginForm.get('password')?.errors?.['minlength']) { Le mot de passe doit
+            contenir au moins 6 caractères } @if (loginForm.get('password')?.errors?.['required']) { Le mot de passe est requis } }
           </div>
         </div>
         <p-button type="submit" label="Connexion" />
+        <div>
+          <p class="register-text">Vous n'avez pas de compte ? <a [routerLink]="['/register']"> S'enregistrer</a></p>
+        </div>
       </form>
-      <p class="register-text">Vous n'avez pas de compte ? <a href="#">S'enregistrer</a></p>
     </div>
   </div>
 </div>
