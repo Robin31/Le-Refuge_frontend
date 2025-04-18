@@ -7,7 +7,8 @@ import { ImageModule } from 'primeng/image';
 import { ButtonModule } from 'primeng/button';
 
 type SafeMenuItem = {
-  icon: string;
+  label: string | null;
+  icon: string | null;
   command: () => void;
 };
 
@@ -42,18 +43,28 @@ export class MenuComponent implements OnInit {
 
     this.endItems = [
       {
+        label: 'Connexion',
+        icon: null,
+        command: (): void => {
+          this._router.navigate(['/login']);
+        },
+      },
+      {
+        label: null,
         icon: 'pi pi-user',
         command: (): void => {
           this._router.navigate(['/moncompte']);
         },
       },
       {
+        label: null,
         icon: 'pi pi-globe',
         command: (): void => {
           this._router.navigate(['/localisation']);
         },
       },
       {
+        label: null,
         icon: 'pi pi-question',
         command: (): void => {
           this._router.navigate(['/faq']);
