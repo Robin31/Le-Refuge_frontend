@@ -1,13 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'primeicons/primeicons.css';
-
-:root {
-  --p-navigation-item-focus-background: transparent;
-  --p-navigation-item-active-background: transparent;
-  --p-menubar-item-focus-background: transparent;
-  --p-menubar-item-active-background: transparent;
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: white;
 }
 
-html {
-  background-color: white;
+.p-menubar {
+  --p-menubar-background: #7e854f;
+  --p-menubar-border-color: #d4d4d4;
+  --p-menubar-color: #e8e9e0;
+  --p-menubar-border-radius: none;
+  --p-menubar-padding: 0.5rem 1rem;
+  --p-menubar-gap: 0.5rem;
+  height: 4rem;
 }
