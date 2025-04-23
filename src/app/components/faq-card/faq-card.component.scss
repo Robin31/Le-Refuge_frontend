@@ -1,0 +1,16 @@
+:host ::ng-deep .faq-answer .p-card {
+  margin-top: 1rem;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #d2d4c4;
+}
+
+:host ::ng-deep .faq-question .p-card {
+  margin-top: 2rem;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #e8e9e0; /* surface.50 */
+  border-color: #393e20; /* surface.100 ou 200 */
+}

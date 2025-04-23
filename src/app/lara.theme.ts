@@ -478,7 +478,7 @@ export const myPreset = definePreset(Lara, {
           hoverMutedColor: '{surface.600}',
         },
         content: {
-          background: '{surface.0}',
+          background: '{surface.900}',
           hoverBackground: '{surface.100}',
           borderColor: '{surface.200}',
           color: '{text.color}',
@@ -596,13 +596,13 @@ export const myPreset = definePreset(Lara, {
           shadow: '0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgba(18, 18, 23, 0.05)',
         },
         text: {
-          color: '{surface.700}',
+          color: '{surface.500}',
           hoverColor: '{surface.800}',
           mutedColor: '{surface.500}',
           hoverMutedColor: '{surface.600}',
         },
         content: {
-          background: '{surface.0}',
+          background: '{surface.900}',
           hoverBackground: '{surface.100}',
           borderColor: '{surface.200}',
           color: '{text.color}',
