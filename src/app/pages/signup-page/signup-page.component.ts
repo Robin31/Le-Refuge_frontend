@@ -4,9 +4,12 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validatio
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { FloatLabelModule } from 'primeng/floatlabel';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { take } from 'rxjs';
 
 const MIN_PASSWORD_LENGTH = 6;
+const ONE_RESPONSE = 1;
 
 @Component({
   selector: 'app-signup-page',
@@ -16,6 +19,9 @@ const MIN_PASSWORD_LENGTH = 6;
   styleUrl: './signup-page.component.scss',
 })
 export class SignupPageComponent implements OnInit {
+  private _authService = inject(AuthService);
+  private _router = inject(Router);
+
   loginForm!: FormGroup;
   _formBuilder = inject(FormBuilder);
   minLength = MIN_PASSWORD_LENGTH;
@@ -43,12 +49,10 @@ export class SignupPageComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this._authService
+      .register$(this.loginForm.value.email, this.loginForm.value.password)
+      .pipe(take(ONE_RESPONSE))
+      .subscribe(() => this._router.navigate(['/']));
     this.submitted = true;
-
-    if (this.loginForm.valid) {
-      console.log('Form Submitted!', this.loginForm.value);
-    } else {
-      console.log('Form is invalid');
-    }
   }
 }
