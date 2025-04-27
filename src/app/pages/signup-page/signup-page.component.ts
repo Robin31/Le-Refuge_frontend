@@ -6,7 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { take } from 'rxjs';
+import { switchMap, take } from 'rxjs';
 
 const MIN_PASSWORD_LENGTH = 6;
 const ONE_RESPONSE = 1;
@@ -51,7 +51,10 @@ export class SignupPageComponent implements OnInit {
   onSubmit(): void {
     this._authService
       .register$(this.loginForm.value.email, this.loginForm.value.password)
-      .pipe(take(ONE_RESPONSE))
+      .pipe(
+        take(ONE_RESPONSE),
+        switchMap(() => this._authService.login$(this.loginForm.value.email, this.loginForm.value.password))
+      )
       .subscribe(() => this._router.navigate(['/']));
     this.submitted = true;
   }
