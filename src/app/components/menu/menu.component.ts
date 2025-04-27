@@ -5,6 +5,7 @@ import { MenuItem } from 'primeng/api';
 import { Menubar } from 'primeng/menubar';
 import { ImageModule } from 'primeng/image';
 import { ButtonModule } from 'primeng/button';
+import { AuthService } from 'src/app/services/auth.service';
 
 type SafeMenuItem = {
   label: string | null;
@@ -23,10 +24,23 @@ export class MenuComponent implements OnInit {
   items: MenuItem[] | undefined;
   endItems: SafeMenuItem[] | undefined;
 
+  _authService = inject(AuthService);
   _router = inject(Router);
+
+  userRole = this._authService.getUserRole();
 
   ngOnInit(): void {
     this.items = [
+      ...(this.userRole === 'ADMIN'
+        ? [
+            {
+              label: 'Dashboard',
+              command: (): void => {
+                this._router.navigate(['/admin/dashboard']);
+              },
+            },
+          ]
+        : []),
       {
         label: 'Nos chiens',
         command: (): void => {
@@ -40,22 +54,48 @@ export class MenuComponent implements OnInit {
         },
       },
     ];
+    this.endItemsUpdate();
+  }
+
+  endItemsUpdate(): void {
+    const isLoggedIn = this._authService.isLoggedIn();
 
     this.endItems = [
+      ...(!isLoggedIn
+        ? [
+            {
+              label: 'Créer un compte',
+              icon: null,
+              command: (): void => {
+                this._router.navigate(['/signup']);
+              },
+            },
+          ]
+        : []),
       {
-        label: 'Connexion',
+        label: isLoggedIn ? 'Déconnexion' : 'Connexion',
         icon: null,
         command: (): void => {
-          this._router.navigate(['/login']);
+          if (isLoggedIn) {
+            this._authService.clearToken();
+            this._router.navigate(['/']);
+            this.endItemsUpdate();
+          } else {
+            this._router.navigate(['/login']);
+          }
         },
       },
-      {
-        label: null,
-        icon: 'pi pi-user',
-        command: (): void => {
-          this._router.navigate(['/moncompte']);
-        },
-      },
+      ...(isLoggedIn
+        ? [
+            {
+              label: null,
+              icon: 'pi pi-user',
+              command: (): void => {
+                this._router.navigate(['/moncompte']);
+              },
+            },
+          ]
+        : []),
       {
         label: null,
         icon: 'pi pi-globe',
@@ -71,5 +111,14 @@ export class MenuComponent implements OnInit {
         },
       },
     ];
+  }
+
+  get isAuthenticated(): boolean {
+    return this._authService.isLoggedIn();
+  }
+
+  logout(): void {
+    this._authService.clearToken();
+    this._router.navigate(['/']);
   }
 }

@@ -31,7 +31,7 @@
 
         <div class="input-group">
           <p-floatlabel variant="on">
-            <input pInputText type="confirmPassword" id="confirmPassword" formControlName="confirmPassword" required />
+            <input pInputText type="password" id="confirmPassword" formControlName="confirmPassword" required />
             <label for="confirmPassword">Confirmation mot de passe</label>
           </p-floatlabel>
           <div class="error">
@@ -40,7 +40,7 @@
             @if (loginForm.get('confirmPassword')?.errors?.['passwordMismatch']) { Les mots de passe ne correspondent pas } }
           </div>
         </div>
-        <p-button type="submit" label="Connexion" />
+        <p-button type="submit" label="S'enregistrer" />
         <div>
           <p class="register-text">Vous avez déjà un compte ? <a [routerLink]="['/login']"> Se connecter</a></p>
         </div>
