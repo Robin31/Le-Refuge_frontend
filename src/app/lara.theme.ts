@@ -389,17 +389,6 @@ export const myPreset = definePreset(Lara, {
         size: '0.875rem',
       },
     },
-    menuBar: {
-      background: '{surface.0}',
-      borderColor: '{surface.200}',
-      borderRadius: '{border.radius.md}',
-      color: '{text.color}',
-      padding: '0.5rem 1rem',
-      gap: '0.5rem',
-      hoverBackground: '{primary.50}',
-      activeBackground: '{primary.100}',
-      activeColor: '{primary.700}',
-    },
     overlay: {
       select: {
         borderRadius: '{border.radius.md}',
@@ -473,16 +462,16 @@ export const myPreset = definePreset(Lara, {
         },
         text: {
           color: '{surface.700}',
-          hoverColor: '{surface.800}',
+          hoverColor: '{primary.0}',
           mutedColor: '{surface.500}',
           hoverMutedColor: '{surface.600}',
         },
         content: {
-          background: '{surface.900}',
+          background: '{surface.50}',
           hoverBackground: '{surface.100}',
           borderColor: '{surface.200}',
           color: '{text.color}',
-          hoverColor: '{text.hover.color}',
+          hoverColor: '{primary.0}',
         },
         overlay: {
           select: {
@@ -520,13 +509,24 @@ export const myPreset = definePreset(Lara, {
             color: '{text.muted.color}',
           },
         },
+        menuBar: {
+          background: '{surface.0}',
+          borderColor: '{surface.200}',
+          borderRadius: '{border.radius.md}',
+          color: '{primary.0}',
+          padding: '0.5rem 1rem',
+          gap: '0.5rem',
+          hoverBackground: '{primary.0}',
+          activeBackground: '{primary.100}',
+          activeColor: '{primary.0}',
+        },
         navigation: {
           item: {
-            focusBackground: '{primary.500}',
-            activeBackground: '{primary.500}',
+            focusBackground: '{primary.0}',
+            activeBackground: '{primary.100}',
             color: '{text.color}',
             focusColor: '{text.hover.color}',
-            activeColor: '{text.hover.color}',
+            activeColor: '{primary.0}',
             icon: {
               color: '{surface.400}',
               focusColor: '{surface.500}',
@@ -539,7 +539,7 @@ export const myPreset = definePreset(Lara, {
           },
           submenuIcon: {
             color: '{surface.400}',
-            focusColor: '{surface.500}',
+            focusColor: '{primary.0}',
             activeColor: '{surface.500}',
           },
         },
@@ -602,7 +602,7 @@ export const myPreset = definePreset(Lara, {
           hoverMutedColor: '{surface.600}',
         },
         content: {
-          background: '{surface.900}',
+          background: '{surface.100}',
           hoverBackground: '{surface.100}',
           borderColor: '{surface.200}',
           color: '{text.color}',
@@ -657,10 +657,10 @@ export const myPreset = definePreset(Lara, {
         },
         navigation: {
           item: {
-            focusBackground: '{primary.500}',
+            focusBackground: '{primary.0}',
             activeBackground: '{surface.100}',
-            color: '{primary.100}',
-            focusColor: '{primary.200}',
+            color: '{primary.800}',
+            focusColor: '{primary.800}',
             activeColor: '{text.hover.color}',
             icon: {
               color: '{primary.100}',

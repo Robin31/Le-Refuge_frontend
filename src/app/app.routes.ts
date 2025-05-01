@@ -3,6 +3,7 @@ import { AccueilPageComponent } from './pages/accueil-page/accueil-page.componen
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { FaqPageComponent } from './pages/faq-page/faq-page.component';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page/dashboard-page.component';
 
 export const routes: Routes = [
   {
@@ -20,5 +21,9 @@ export const routes: Routes = [
   {
     path: 'faq',
     component: FaqPageComponent,
+  },
+  {
+    path: 'admin/dashboard',
+    component: DashboardPageComponent,
   },
 ];

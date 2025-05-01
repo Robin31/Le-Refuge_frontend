@@ -10,9 +10,10 @@ body {
 
 .p-menubar {
   --p-menubar-background: #7e854f;
-  --p-menubar-border-color: #d4d4d4;
+  --p-menubar-border-color: none;
   --p-menubar-color: #e8e9e0;
   --p-menubar-border-radius: none;
+  --p-menubar-item-color: #e8e9e0;
   --p-menubar-padding: 0.5rem 1rem;
   --p-menubar-gap: 0.5rem;
   height: 4rem;
