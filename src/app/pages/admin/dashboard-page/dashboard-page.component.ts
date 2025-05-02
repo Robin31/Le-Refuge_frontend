@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuComponent } from '../../../components/menu/menu.component';
-import { DashboardMenuComponent } from '../../../components/dashboard-menu/dashboard-menu.component';
+import { DashboardMenuComponent } from '../../../components/admin/dashboard-menu/dashboard-menu.component';
 
 @Component({
   selector: 'app-dashboard-page',

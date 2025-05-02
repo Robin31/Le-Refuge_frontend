@@ -19,6 +19,25 @@ body {
   height: 4rem;
 }
 
+html,
+:root {
+  color-scheme: light !important;
+}
+
+body {
+  color: var(--text-color);
+}
+
 :root {
   --text-color: #4c522c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --p-tabs-tab-background: var(--p-surface-50) !important;
+    --p-tabs-tab-hover-background: var(--p-surface-50) !important;
+    --p-tabs-tab-active-background: var(--p-surface-50) !important;
+    --p-tabs-nav-button-shadow: none !important;
+    --text-color: #4c522c !important;
+  }
 }

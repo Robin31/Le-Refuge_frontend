@@ -3,9 +3,10 @@ import { Router, RouterModule } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { TabsModule } from 'primeng/tabs';
 import { CommonModule } from '@angular/common';
+import { dashboardMenuRoutesPath } from './dashboard-menu.routes';
 
 type TabItem = {
-  route: string;
+  routerLink: string;
   label: string;
   icon: string;
 };
@@ -20,10 +21,10 @@ type TabItem = {
 export class DashboardMenuComponent {
   _router: Router = inject(Router);
   tabs: TabItem[] = [
-    { route: 'chiens', label: 'Chiens', icon: 'fa fa-solid fa-dog' },
-    { route: 'bénévoles', label: 'Bénévoles', icon: 'fa fa-solid fa-hand-holding-heart' },
-    { route: 'utilisateurs', label: 'Utilisateurs', icon: 'fa fa-solid fa-users' },
-    { route: 'faq', label: 'Faqs', icon: 'fa fa-solid fa-question' },
+    { routerLink: dashboardMenuRoutesPath.chien, label: 'Chiens', icon: 'fa fa-solid fa-dog' },
+    { routerLink: dashboardMenuRoutesPath.benevole, label: 'Bénévoles', icon: 'fa fa-solid fa-hand-holding-heart' },
+    { routerLink: dashboardMenuRoutesPath.user, label: 'Utilisateurs', icon: 'fa fa-solid fa-users' },
+    { routerLink: dashboardMenuRoutesPath.faq, label: 'Faqs', icon: 'fa fa-solid fa-question' },
   ];
 
   activeTab: MenuItem = this.tabs[0];
