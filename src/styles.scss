@@ -41,3 +41,15 @@ body {
     --text-color: #4c522c !important;
   }
 }
+
+.p-datatable {
+  --p-datatable-header-color: #e8e9e0;
+  --p-datatable-header-border-color: none;
+  --p-datatable-header-font-size: 1.2rem;
+  --p-datatable-header-font-weight: bold;
+  --p-datatable-header-padding: 1rem;
+  --p-datatable-header-border-radius: none;
+  --p-datatable-row-background: #white;
+  --p-datatable-border-radius: 1rem;
+  --p-datatable-border-color: #1b27cd;
+}

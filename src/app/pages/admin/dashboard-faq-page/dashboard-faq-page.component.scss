@@ -1,0 +1,26 @@
+.table ::ng-deep .p-datatable {
+  width: 90%;
+  justify-content: center;
+  margin-left: 5%;
+  margin-top: 3rem;
+  border-radius: 12px;
+  border: 1px solid #b6b89c;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}

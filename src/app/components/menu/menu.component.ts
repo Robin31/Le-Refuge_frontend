@@ -40,7 +40,7 @@ export class MenuComponent implements OnInit {
   startItemsUpdate(): void {
     this.userRole = this._authService.getUserRole();
     this.items = [
-      ...(this.userRole === 'ADMIN'
+      ...(this.userRole === 'ROLE_ADMIN'
         ? [
             {
               label: 'Dashboard',

@@ -11,6 +11,8 @@ type TabItem = {
   icon: string;
 };
 
+const NONE_SELECTED = 0;
+
 @Component({
   selector: 'app-dashboard-menu',
   standalone: true,
@@ -27,7 +29,7 @@ export class DashboardMenuComponent {
     { routerLink: dashboardMenuRoutesPath.faq, label: 'Faqs', icon: 'fa fa-solid fa-question' },
   ];
 
-  activeTab: MenuItem = this.tabs[0];
+  activeTab: MenuItem = this.tabs[NONE_SELECTED];
 
   onTabChange(tab: MenuItem): void {
     this.activeTab = tab;
