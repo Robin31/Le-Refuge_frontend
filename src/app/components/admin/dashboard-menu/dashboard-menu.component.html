@@ -1,0 +1,12 @@
+<div class="card">
+  <p-tabs value="/chiens">
+    <p-tablist>
+      @for(tab of tabs; track tab.routerLink){
+      <p-tab [value]="tab.routerLink" [routerLink]="['/admin/dashboard', tab.routerLink]">
+        <i [class]="tab.icon"></i>
+        <span>{{ tab.label }}</span>
+      </p-tab>
+      }
+    </p-tablist>
+  </p-tabs>
+</div>

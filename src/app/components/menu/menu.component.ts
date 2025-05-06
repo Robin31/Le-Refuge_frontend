@@ -27,11 +27,20 @@ export class MenuComponent implements OnInit {
   _authService = inject(AuthService);
   _router = inject(Router);
 
-  userRole = this._authService.getUserRole();
+  userRole: string | null = null;
 
   ngOnInit(): void {
+    this._authService.loggedIn$.subscribe(() => {
+      this.startItemsUpdate();
+    });
+    this.startItemsUpdate();
+    this.endItemsUpdate();
+  }
+
+  startItemsUpdate(): void {
+    this.userRole = this._authService.getUserRole();
     this.items = [
-      ...(this.userRole === 'ADMIN'
+      ...(this.userRole === 'ROLE_ADMIN'
         ? [
             {
               label: 'Dashboard',
@@ -54,7 +63,6 @@ export class MenuComponent implements OnInit {
         },
       },
     ];
-    this.endItemsUpdate();
   }
 
   endItemsUpdate(): void {

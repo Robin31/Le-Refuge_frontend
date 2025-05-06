@@ -3,3 +3,5 @@ export type Faq = {
   question: string;
   answer: string;
 };
+
+export type FaqCreate = Omit<Faq, 'id'>;
