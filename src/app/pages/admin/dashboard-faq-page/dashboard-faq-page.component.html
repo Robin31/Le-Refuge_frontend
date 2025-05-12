@@ -1,15 +1,27 @@
 <app-menu></app-menu>
 <app-dashboard-menu></app-dashboard-menu>
-<div class="add-button">
-  <p-button type="button" (onClick)="openForm()" label="Ajouter une question" />
+
+<div class="header-bar">
+  <div class="add-button">
+    <p-button type="button" (onClick)="openForm()" label="Ajouter une question" />
+  </div>
+
+  <div class="search-input">
+    <p-inputgroup>
+      <p-inputgroup-addon>
+        <i class="pi pi-search"></i>
+      </p-inputgroup-addon>
+      <input pInputText type="search" [value]="searchTerm()" (input)="searchTerm.set($any($event.target).value)" placeholder="Rechercher" />
+    </p-inputgroup>
+  </div>
 </div>
+
 <div class="table">
-  <p-table [value]="(faqs$ | async)!" [rows]="10" [paginator]="true" [scrollable]="true">
+  <p-table [value]="(faqs$ | async | FilterArray : searchTerm() : 'question')!" [rows]="10" [paginator]="true" [scrollable]="true">
     <ng-template pTemplate="header">
       <tr>
         <th>Question</th>
         <th>Answer</th>
-        <th>ID</th>
         <th class="right">Actions</th>
       </tr>
     </ng-template>
@@ -17,7 +29,6 @@
       <tr>
         <td>{{ faq.question }}</td>
         <td>{{ faq.answer }}</td>
-        <td>ID : {{ faq.id }}</td>
         <td class="buttons">
           <p-button type="button" icon="pi pi-pencil" (click)="openForm(faq)" />
           <p-button type="button" icon="pi pi-trash" (onClick)="delete(faq)" />
