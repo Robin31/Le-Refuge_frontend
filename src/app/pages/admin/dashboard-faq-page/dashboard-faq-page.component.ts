@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { DashboardMenuComponent } from 'src/app/components/admin/dashboard-menu/dashboard-menu.component';
 import { MenuComponent } from 'src/app/components/menu/menu.component';
@@ -14,6 +14,12 @@ import { MessageModule } from 'primeng/message';
 import { DialogModule } from 'primeng/dialog';
 import { FormFaqComponent } from '../../../components/admin/form/form-faq/form-faq.component';
 import { ToastModule } from 'primeng/toast';
+import { FormsModule } from '@angular/forms';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { FilterArrayPipe } from 'src/app/shared/filter-array.pipe';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 
 const NONE_SELECTED = 0;
 @Component({
@@ -30,6 +36,11 @@ const NONE_SELECTED = 0;
     ConfirmDialogModule,
     MessageModule,
     DialogModule,
+    FormsModule,
+    FilterArrayPipe,
+    InputTextModule,
+    InputGroupModule,
+    InputGroupAddonModule,
   ],
   templateUrl: './dashboard-faq-page.component.html',
   styleUrl: './dashboard-faq-page.component.scss',
@@ -41,8 +52,11 @@ export class DashboardFaqPageComponent {
   #confirmationService = inject(ConfirmationService);
 
   faqs$: Observable<Faq[]> = this.#faqService.getAllFaqs();
-  faqs = signal<Faq[]>([]);
+  faqs: WritableSignal<Faq[]> = signal([]);
+  searchFaqs = toSignal(this.faqs$, { initialValue: [] });
 
+  searchTerm = signal('');
+  filteredFaqs: WritableSignal<Faq[]> = signal(this.faqs());
   formVisible = false;
   faqForm: Faq | undefined;
   faq = signal<Faq | null>(null);
@@ -83,6 +97,11 @@ export class DashboardFaqPageComponent {
     });
   }
 
+  onInputChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.searchTerm.set(input.value);
+  }
+
   private _apiCreate(faq: FaqCreate): void {
     this.#faqService
       .add(faq)
@@ -114,7 +133,7 @@ export class DashboardFaqPageComponent {
           this.#toastService.success('Bien joué !', 'Vos modifications ont été enregistrées');
         }),
         catchError(() => {
-          this.#toastService.error('Failed to update FAQ', 'Error');
+          this.#toastService.error('Problème detecté !', 'Une erreur est survenue');
           return of(void NONE_SELECTED);
         })
       )
