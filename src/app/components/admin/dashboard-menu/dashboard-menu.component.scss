@@ -6,9 +6,19 @@
   margin-right: 0.5rem;
 }
 
+::ng-deep .p-tieredmenu {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+::ng-deep .p-tieredmenu .p-tieredmenu-submenu-icon {
+  margin-left: 0.25rem !important; /* Ou 2px, selon ce que tu préfères */
+}
+
 .card {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
   background-color: #f6f7f2;
 }
