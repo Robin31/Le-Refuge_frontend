@@ -8,6 +8,9 @@ import { DashboardFaqPageComponent } from './pages/admin/dashboard-faq-page/dash
 import { DashboardUserPageComponent } from './pages/admin/dashboard-user-page/dashboard-user-page.component';
 import { DashboardChienPageComponent } from './pages/admin/dashboard-chien-page/dashboard-chien-page.component';
 import { DashboardBenevolePageComponent } from './pages/admin/dashboard-benevole-page/dashboard-benevole-page.component';
+import { DashboardSexePageComponent } from './pages/admin/dashboard-sexe-page/dashboard-sexe-page.component';
+import { DashboardCaracterePageComponent } from './pages/admin/dashboard-caractere-page/dashboard-caractere-page.component';
+import { DashboardRacePageComponent } from './pages/admin/dashboard-race-page/dashboard-race-page.component';
 
 export const routes: Routes = [
   {
@@ -45,5 +48,17 @@ export const routes: Routes = [
   {
     path: 'admin/dashboard/chien',
     component: DashboardChienPageComponent,
+  },
+  {
+    path: 'admin/dashboard/chien/sexe',
+    component: DashboardSexePageComponent,
+  },
+  {
+    path: 'admin/dashboard/chien/race',
+    component: DashboardRacePageComponent,
+  },
+  {
+    path: 'admin/dashboard/chien/caractere',
+    component: DashboardCaracterePageComponent,
   },
 ];

@@ -2,6 +2,9 @@ import { Route } from '@angular/router';
 
 export const dashboardMenuRoutesPath = {
   chien: 'chien',
+  sexe: 'sexe',
+  race: 'race',
+  caractere: 'caractere',
   user: 'user',
   benevole: 'benevole',
   faq: 'faq',
@@ -10,13 +13,30 @@ export const dashboardMenuRoutesPath = {
 
 export const dashboardMenuRoutes: Route[] = [
   {
-    path: '',
+    path: 'admin/dashboard',
     loadComponent: () => import('../../../pages/admin/dashboard-page/dashboard-page.component').then(m => m.DashboardPageComponent),
     children: [
       {
         path: dashboardMenuRoutesPath.chien,
         loadComponent: () =>
           import('../../../pages/admin/dashboard-chien-page/dashboard-chien-page.component').then(m => m.DashboardChienPageComponent),
+        children: [
+          {
+            path: dashboardMenuRoutesPath.sexe,
+            loadComponent: () =>
+              import('../../../pages/admin/dashboard-sexe-page/dashboard-sexe-page.component').then(m => m.DashboardSexePageComponent),
+          },
+          {
+            path: dashboardMenuRoutesPath.race,
+            loadComponent: () =>
+              import('../../../pages/admin/dashboard-race-page/dashboard-race-page.component').then(m => m.DashboardRacePageComponent),
+          },
+          {
+            path: dashboardMenuRoutesPath.caractere,
+            loadComponent: () =>
+              import('../../../pages/admin/dashboard-caractere-page/dashboard-caractere-page.component').then(m => m.DashboardCaracterePageComponent),
+          },
+        ],
       },
       {
         path: dashboardMenuRoutesPath.benevole,
