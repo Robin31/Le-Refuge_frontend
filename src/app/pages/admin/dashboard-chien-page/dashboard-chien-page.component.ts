@@ -20,32 +20,32 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 
-
 const NONE_SELECTED = 0;
 @Component({
   selector: 'app-dashboard-chien-page',
   standalone: true,
-  imports: [MenuComponent,
-      DashboardMenuComponent,
-      FormChienComponent,
-      ToastModule,
-      TableModule,
-      AsyncPipe,
-      ButtonModule,
-      ConfirmDialogModule,
-      MessageModule,
-      DialogModule,
-      FormsModule,
-      FilterArrayPipe,
-      InputTextModule,
-      InputGroupModule,
-      InputGroupAddonModule,],
+  imports: [
+    MenuComponent,
+    DashboardMenuComponent,
+    FormChienComponent,
+    ToastModule,
+    TableModule,
+    AsyncPipe,
+    ButtonModule,
+    ConfirmDialogModule,
+    MessageModule,
+    DialogModule,
+    FormsModule,
+    FilterArrayPipe,
+    InputTextModule,
+    InputGroupModule,
+    InputGroupAddonModule,
+  ],
   templateUrl: './dashboard-chien-page.component.html',
   styleUrl: './dashboard-chien-page.component.scss',
   providers: [MessageService, ConfirmationService],
 })
 export class DashboardChienPageComponent {
-
   #chienService = inject(ChienService);
   #toastService = inject(ToastService);
   #confirmationService = inject(ConfirmationService);
@@ -56,8 +56,8 @@ export class DashboardChienPageComponent {
   searchTerm = signal('');
   chienForm: Chien | undefined;
   formVisible: boolean = false;
-  
-  getCaractereList(chien: Chien): string{
+
+  getCaractereList(chien: Chien): string {
     return chien.caractere.map(c => c.name).join(', ');
   }
 

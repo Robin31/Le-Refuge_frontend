@@ -1,6 +1,6 @@
-import { Caractere } from "./caractere-model";
-import { Race } from "./race-model";
-import { Sexe } from "./sexe-model";
+import { Caractere } from './caractere-model';
+import { Race } from './race-model';
+import { Sexe } from './sexe-model';
 
 export type Chien = {
   id: number;
@@ -23,7 +23,7 @@ export type ChienCreate = {
   raceId: number;
   sexeId: number;
   caractereIds: number[];
-}
+};
 
 export type ChienUpdate = ChienCreate & {
   id: number;

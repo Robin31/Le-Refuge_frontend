@@ -44,10 +44,9 @@
           @for (c of chien.caracteres; track $index) {
           {{ c.name }}
           @if ($index < chien.caracteres.length - 1) {
-          
+
           <span>, </span>
-          }
-        }
+          } }
         </td>
         <td class="buttons">
           <p-button type="button" icon="pi pi-pencil" (click)="openUpdateForm(chien)" />

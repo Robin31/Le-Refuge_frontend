@@ -60,7 +60,7 @@ export class DashboardCaracterePageComponent {
   get searchTerm(): string {
     return this.searchTermSignal();
   }
-  
+
   openForm(caractere?: Caractere): void {
     this.caractereForm = caractere;
     this.formVisible = true;

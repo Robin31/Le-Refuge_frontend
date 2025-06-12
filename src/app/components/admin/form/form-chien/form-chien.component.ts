@@ -41,7 +41,7 @@ export class FormChienComponent {
       sexes: this.getSexeById(this.chien?.sexe.id),
       caracteres: this.getCaracteresByIds(this.chien?.caractere?.map(c => c.id) ?? []),
       castration: this.chien?.castration ?? null,
-    })
+    });
   }
 
   get chien(): Chien | undefined {
@@ -55,31 +55,19 @@ export class FormChienComponent {
   validate: EventEmitter<ChienCreate | Chien> = new EventEmitter<ChienCreate | Chien>();
 
   chienForm: FormGroup = new FormGroup({
-      name: new FormControl<string>(this.chien ? this.chien.name : '', Validators.required),
-      age: new FormControl<number | null>(this.chien ? this.chien.age : null, [Validators.required, Validators.pattern("^[0-9]*$")]),
-      description: new FormControl<string>(this.chien ? this.chien.description : '', Validators.required),
-      image: new FormControl<string>(this.chien ? this.chien.image : '', Validators.required),
-      races: new FormControl<Race | null>(
-      this.chien ? this.getRaceById(this.chien?.race.id) : null,
-      Validators.required
-    ),
-      sexes: new FormControl<Sexe | null>(
-      this.chien ? this.getSexeById(this.chien?.sexe.id) : null,
-      Validators.required
-    ),
-      caracteres: new FormControl<Caractere[]>(
-      this.chien ? this.getCaracteresByIds(this.chien?.caractere.map(c => c.id)) : [],
-      Validators.required
-    ),
-      castration: new FormControl<boolean | null>(
-      this.chien?.castration ?? null,
-      Validators.required
-    ),
+    name: new FormControl<string>(this.chien ? this.chien.name : '', Validators.required),
+    age: new FormControl<number | null>(this.chien ? this.chien.age : null, [Validators.required, Validators.pattern('^[0-9]*$')]),
+    description: new FormControl<string>(this.chien ? this.chien.description : '', Validators.required),
+    image: new FormControl<string>(this.chien ? this.chien.image : '', Validators.required),
+    races: new FormControl<Race | null>(this.chien ? this.getRaceById(this.chien?.race.id) : null, Validators.required),
+    sexes: new FormControl<Sexe | null>(this.chien ? this.getSexeById(this.chien?.sexe.id) : null, Validators.required),
+    caracteres: new FormControl<Caractere[]>(this.chien ? this.getCaracteresByIds(this.chien?.caractere.map(c => c.id)) : [], Validators.required),
+    castration: new FormControl<boolean | null>(this.chien?.castration ?? null, Validators.required),
   });
 
   raceListSignal = toSignal(this.#raceService.getAllRaces());
   get raceList(): Race[] {
-    return this.raceListSignal() ??  [];
+    return this.raceListSignal() ?? [];
   }
 
   sexeListSignal = toSignal(this.#sexeService.getAllSexes());
@@ -94,7 +82,7 @@ export class FormChienComponent {
 
   castrationOptions = [
     { label: 'Oui', value: true },
-    { label: 'Non', value: false }
+    { label: 'Non', value: false },
   ];
 
   getRaceById(id: number | undefined): Race | null {
@@ -131,19 +119,18 @@ export class FormChienComponent {
     const caractereIds = caractere.map(c => c.id);
 
     const payload = {
-    id: this.#chien?.id,
-    name,
-    age,
-    description,
-    image,
-    castration,
-    raceId: race.id,
-    sexeId: sexe.id,
-    caractereIds
-  };
+      id: this.#chien?.id,
+      name,
+      age,
+      description,
+      image,
+      castration,
+      raceId: race.id,
+      sexeId: sexe.id,
+      caractereIds,
+    };
 
     this.validate.emit(payload);
     this.chienForm.reset();
   }
 }
-
