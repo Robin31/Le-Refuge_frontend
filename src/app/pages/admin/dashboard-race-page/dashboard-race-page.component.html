@@ -1,3 +1,45 @@
 <app-menu></app-menu>
 <app-dashboard-menu></app-dashboard-menu>
-<p>dashboard-race-page works!</p>
+
+<div class="header-bar">
+  <div class="add-button">
+    <p-button type="button" (onClick)="openForm()" label="Ajouter une question" />
+  </div>
+
+  <div class="search-input">
+    <p-inputgroup>
+      <p-inputgroup-addon>
+        <i class="pi pi-search"></i>
+      </p-inputgroup-addon>
+      <input pInputText type="search" [value]="searchTerm" (input)="searchTerm()" placeholder="Rechercher" />
+    </p-inputgroup>
+  </div>
+</div>
+
+<div class="table">
+  <p-table [value]="(races$ | async | FilterArray : searchTerm() : 'name')!" [rows]="10" [paginator]="true" [scrollable]="true">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Race</th>
+        <th class="right">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-race>
+      <tr>
+        <td>{{ race.name }}</td>
+        <td class="buttons">
+          <p-button type="button" icon="pi pi-pencil" (click)="openForm(race)" />
+          <p-button type="button" icon="pi pi-trash" (onClick)="delete(race)" />
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-confirmDialog></p-confirmDialog>
+
+<p-toast></p-toast>
+
+<p-dialog [header]="raceForm ? 'Modifier les informations' : 'Ajouter une question'" [(visible)]="formVisible">
+  <app-form-race [race]="raceForm" (validate)="addOrUpdateRace($event)"></app-form-race>
+</p-dialog>

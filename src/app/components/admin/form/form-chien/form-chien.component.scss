@@ -1,0 +1,15 @@
+.form-chien {
+  display: grid;
+  flex-direction: column;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.button {
+   display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}

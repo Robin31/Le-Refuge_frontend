@@ -9,7 +9,7 @@ import { Sexe, SexeCreate } from '../models/sexe-model';
 })
 export class SexeService {
   private readonly _http = inject(HttpClient);
-  private readonly _apiUrl = `${environment.apiUrl}/sexe`;
+  private readonly _apiUrl = `${environment.apiUrl}/sexes`;
 
   private _sexes = signal<Sexe[]>([]);
   public sexes = this._sexes.asReadonly();

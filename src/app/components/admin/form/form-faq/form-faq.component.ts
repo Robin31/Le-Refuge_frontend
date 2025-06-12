@@ -2,11 +2,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Faq, FaqCreate } from '../../../../models/faq-model';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
   selector: 'app-form-faq',
   standalone: true,
-  imports: [ButtonModule, ReactiveFormsModule],
+  imports: [ButtonModule, ReactiveFormsModule, InputTextModule],
   templateUrl: './form-faq.component.html',
   styleUrl: './form-faq.component.scss',
 })

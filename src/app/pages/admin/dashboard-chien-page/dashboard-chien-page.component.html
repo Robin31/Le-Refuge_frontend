@@ -1,3 +1,67 @@
 <app-menu></app-menu>
 <app-dashboard-menu></app-dashboard-menu>
-<p>dashboard-chien-page works!</p>
+
+<div class="header-bar">
+  <div class="add-button">
+    <p-button type="button" (onClick)="openForm()" label="Ajouter un chien" />
+  </div>
+
+  <div class="search-input">
+    <p-inputgroup>
+      <p-inputgroup-addon>
+        <i class="pi pi-search"></i>
+      </p-inputgroup-addon>
+      <input pInputText type="search" [(ngModel)]="searchTerm" placeholder="Rechercher" />
+    </p-inputgroup>
+  </div>
+</div>
+
+<div class="table">
+  <p-table [value]="(chiens$ | async | FilterArray : searchTerm() : 'name')!" [rows]="10" [paginator]="true" [scrollable]="true">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Chien</th>
+        <th>Age</th>
+        <th>Description</th>
+        <th>Castré</th>
+        <th>Race</th>
+        <th>Sexe</th>
+        <th>Photo</th>
+        <th>Caractere</th>
+        <th class="right">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-chien>
+      <tr>
+        <td>{{ chien.name }}</td>
+        <td>{{ chien.age }}</td>
+        <td>{{ chien.description }}</td>
+        <td>{{ chien.castrastion ? 'Oui' : 'Non' }}</td>
+        <td>{{ chien.race.name }}</td>
+        <td>{{ chien.sexe.name }}</td>
+        <td>{{ chien.image }}</td>
+        <td>
+          @for (c of chien.caracteres; track $index) {
+          {{ c.name }}
+          @if ($index < chien.caracteres.length - 1) {
+          
+          <span>, </span>
+          }
+        }
+        </td>
+        <td class="buttons">
+          <p-button type="button" icon="pi pi-pencil" (click)="openUpdateForm(chien)" />
+          <p-button type="button" icon="pi pi-trash" (onClick)="delete(chien)" />
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-confirmDialog></p-confirmDialog>
+
+<p-toast></p-toast>
+
+<p-dialog [header]="chienForm ? 'Modifier les informations' : 'Ajouter un chien'" [(visible)]="formVisible" (onHide)="closeForm()">
+  <app-form-chien [chien]="chienForm" (validate)="addOrUpdateChien($event)" (closeForm)="closeForm()"></app-form-chien>
+</p-dialog>

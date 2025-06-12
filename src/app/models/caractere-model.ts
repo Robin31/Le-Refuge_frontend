@@ -1,6 +1,6 @@
 export type Caractere = {
   id: number;
-  nom: string;
+  name: string;
 };
 
 export type CaractereCreate = Omit<Caractere, 'id'>;

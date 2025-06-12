@@ -1,6 +1,6 @@
 export type Race = {
   id: number;
-  nom: string;
+  name: string;
 };
 
 export type RaceCreate = Omit<Race, 'id'>;

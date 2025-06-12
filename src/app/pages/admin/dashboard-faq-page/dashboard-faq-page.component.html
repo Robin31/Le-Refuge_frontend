@@ -11,7 +11,7 @@
       <p-inputgroup-addon>
         <i class="pi pi-search"></i>
       </p-inputgroup-addon>
-      <input pInputText type="search" [value]="searchTerm()" (input)="searchTerm.set($any($event.target).value)" placeholder="Rechercher" />
+      <input pInputText type="search" [value]="searchTerm" (input)="searchTerm()" placeholder="Rechercher" />
     </p-inputgroup>
   </div>
 </div>
