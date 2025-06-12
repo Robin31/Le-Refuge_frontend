@@ -15,7 +15,6 @@ import { DialogModule } from 'primeng/dialog';
 import { FormFaqComponent } from '../../../components/admin/form/form-faq/form-faq.component';
 import { ToastModule } from 'primeng/toast';
 import { FormsModule } from '@angular/forms';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { FilterArrayPipe } from 'src/app/shared/filter-array.pipe';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputGroupModule } from 'primeng/inputgroup';
@@ -53,10 +52,8 @@ export class DashboardFaqPageComponent {
 
   faqs$: Observable<Faq[]> = this.#faqService.getAllFaqs();
   faqs: WritableSignal<Faq[]> = signal([]);
-  searchFaqs = toSignal(this.faqs$, { initialValue: [] });
 
   searchTerm = signal('');
-  filteredFaqs: WritableSignal<Faq[]> = signal(this.faqs());
   formVisible = false;
   faqForm: Faq | undefined;
   faq = signal<Faq | null>(null);
@@ -97,11 +94,6 @@ export class DashboardFaqPageComponent {
     });
   }
 
-  onInputChange(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    this.searchTerm.set(input.value);
-  }
-
   private _apiCreate(faq: FaqCreate): void {
     this.#faqService
       .add(faq)
@@ -111,7 +103,7 @@ export class DashboardFaqPageComponent {
         }),
         switchMap(() => this.#faqService.getAllFaqs()),
         tap(faqs => {
-          this.faqs.set(faqs);
+          this.faqs$ = of(faqs);
         }),
         catchError(() => {
           this.#toastService.error('Problème detecté !', 'Une erreur est survenue');
@@ -129,7 +121,7 @@ export class DashboardFaqPageComponent {
       .pipe(
         switchMap(() => this.#faqService.getAllFaqs()),
         tap(faqs => {
-          this.faqs.set(faqs);
+          this.faqs$ = of(faqs);
           this.#toastService.success('Bien joué !', 'Vos modifications ont été enregistrées');
         }),
         catchError(() => {
@@ -148,7 +140,7 @@ export class DashboardFaqPageComponent {
       .delete(faq.id!)
       .pipe(
         tap(() => {
-          this.#toastService.success('FAQ deleted successfully', 'Success');
+          this.#toastService.success('Succès', 'La question a bien été supprimé.');
         }),
         switchMap(() => this.#faqService.getAllFaqs()),
         catchError(() => {

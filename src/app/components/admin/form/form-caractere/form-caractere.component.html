@@ -1,0 +1,10 @@
+<form [formGroup]="caractereForm" (ngSubmit)="submit()">
+  <div class="form-caractere">
+    <div class="caractere">
+      <input type="text" pInputText formControlName="name" placeholder="caractere" />
+    </div>
+    <div class="button">
+      <p-button type="submit" [label]="caractere ? 'Modifier' : 'Ajouter'" [disabled]="caractereForm.invalid" />
+    </div>
+  </div>
+</form>

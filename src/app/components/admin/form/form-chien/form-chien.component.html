@@ -1,0 +1,77 @@
+<form [formGroup]="chienForm" (ngSubmit)="submit()">
+  <div class="form-chien">
+    <div class="name">
+      <p-floatlabel variant="on">
+        <label for="name">Nom</label>
+        <input type="text" pInputText formControlName="name" />
+      </p-floatlabel>
+    </div>
+
+    <div class="age">
+      <p-floatlabel variant="on">
+        <label for="age">Age</label>
+        <input type="text" pInputText formControlName="age" />
+      </p-floatlabel>
+    </div>
+
+    <div class="description">
+      <p-floatlabel variant="on">
+        <label for="description">Description</label>
+        <input type="text" pInputText formControlName="description" />
+      </p-floatlabel>
+    </div>
+
+    <div class="image">
+      <p-floatlabel variant="on">
+        <label for="image">Photo</label>
+        <input type="text" pInputText formControlName="image" />
+      </p-floatlabel>
+    </div>
+
+    <div>
+      <p-floatlabel variant="on">
+        <p-select
+          class="select-castration"
+          [options]="castrationOptions"
+          appendTo="body"
+          formControlName="castration"
+          [fluid]="true"
+          optionValue="value"
+          optionLabel="label"></p-select>
+        <label for="castration">Castré</label>
+      </p-floatlabel>
+    </div>
+
+    <div>
+      <p-floatlabel variant="on">
+        <p-select class="select-race" [options]="raceList" appendTo="body" formControlName="races" [fluid]="true" optionLabel="name"></p-select>
+        <label for="races">Race</label>
+      </p-floatlabel>
+    </div>
+
+    <div>
+      <p-floatlabel variant="on">
+        <p-select class="select-sexe" [options]="sexeList" appendTo="body" formControlName="sexes" [fluid]="true" optionLabel="name"></p-select>
+        <label for="sexes">Sexe</label>
+      </p-floatlabel>
+    </div>
+
+    <div>
+      <p-floatlabel variant="on">
+        <p-multiSelect
+          class="select-caractere"
+          [options]="caractereList"
+          appendTo="body"
+          formControlName="caracteres"
+          [fluid]="true"
+          optionLabel="name"></p-multiSelect>
+        <label for="caracteres">Caractère</label>
+      </p-floatlabel>
+    </div>
+  </div>
+
+  <div class="button">
+    <p-button type="button" (click)="cancelForm()" label="Annuler" />
+    <p-button type="submit" [label]="chien ? 'Modifier' : 'Ajouter'" [disabled]="chienForm.invalid" />
+  </div>
+</form>
