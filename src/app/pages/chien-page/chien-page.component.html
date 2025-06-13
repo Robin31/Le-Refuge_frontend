@@ -1,0 +1,12 @@
+<app-menu></app-menu>
+
+<div class="list">
+  <div class="listChien">
+    @for (chien of chiens();  track $index) {
+      <app-chien-card
+        class="card"
+        [chien]="chien"
+      ></app-chien-card>
+    }
+  </div>
+</div>

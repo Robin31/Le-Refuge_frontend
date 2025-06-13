@@ -1,0 +1,115 @@
+.listChien {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 300px);
+  grid-auto-rows: repeat(6, 300px);
+  grid-column-gap: 2vw;
+  grid-row-gap: 2vw;
+  justify-content: center;
+  margin-top: 2%;
+
+  app-chien-card {
+    height: 100%;
+  }
+}
+
+.card {
+  cursor: pointer;
+  height: max-content;
+  transition: 1s;
+}
+
+@media (min-width:300px) and (max-width: 660px) {
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .listChien {
+    display: grid;
+    grid-template-columns: 300px;
+    height: 100%;
+    grid-auto-rows: 1fr;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 660px) and (max-width:980px) {
+  .list {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
+
+  .listChien {
+    display: grid;
+    grid-template-columns: repeat(2, 300px);
+    height: 100%;
+    grid-auto-rows: 1fr;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 980px) and (max-width: 1320px) {
+  .list {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
+
+  .listChien {
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    height: 100%;
+    grid-auto-rows: 1fr;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1320px) and (max-width: 1900px) {
+  .list {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
+
+  .listChien {
+    display: grid;
+    grid-template-columns: repeat(4, 300px);
+    height: 100%;
+    grid-auto-rows: 1fr;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1900px) {
+  .list {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
+
+  .listChien {
+    display: grid;
+    grid-template-columns: repeat(5, 300px);
+    height: 100%;
+    grid-auto-rows: 1fr;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
