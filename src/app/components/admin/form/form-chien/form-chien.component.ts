@@ -118,8 +118,9 @@ export class FormChienComponent {
 
     const caractereIds = caractere.map(c => c.id);
 
+    const isUpdate = !!this.#chien;
+
     const payload = {
-      id: this.#chien?.id,
       name,
       age,
       description,
@@ -128,6 +129,7 @@ export class FormChienComponent {
       raceId: race.id,
       sexeId: sexe.id,
       caractereIds,
+      ...(isUpdate ?  { id: this.#chien!.id } : {}),
     };
 
     this.validate.emit(payload);
