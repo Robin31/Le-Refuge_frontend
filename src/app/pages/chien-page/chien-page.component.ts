@@ -10,18 +10,17 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [MenuComponent, ChienCardComponent, CommonModule],
   templateUrl: './chien-page.component.html',
-  styleUrl: './chien-page.component.scss'
+  styleUrl: './chien-page.component.scss',
 })
 export class ChienPageComponent implements OnInit {
-
   _chienService = inject(ChienService);
 
-  chiens =  signal<Chien[]>([]);
+  chiens = signal<Chien[]>([]);
   chien = signal<Chien | null>(null);
 
   ngOnInit(): void {
     this._chienService.getAllChiens().subscribe((chiens: Chien[]) => {
       this.chiens.set(chiens);
-    })
+    });
   }
 }

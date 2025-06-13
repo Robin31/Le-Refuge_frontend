@@ -1,17 +1,17 @@
 <div class="card">
   @if (chien()) {
-    <p-card>
-      <img [src]="chien().image || noPhoto" alt="allo">
-      <div class="header">
-        <p class="nom">{{ chien().name }}</p>
-        <p class="race">{{ chien().race.name }}</p>
-        <p class="age">{{ chien().age }} ans</p>
-      </div>
-      <div>
-        <p class="caractere">
-          {{ chien().caractere }}
-        </p>
-      </div>
-    </p-card>
+  <p-card>
+    <img [src]="chien().image || noPhoto" alt="allo" />
+    <div class="header">
+      <p class="nom">{{ chien().name }}</p>
+      <p class="race">{{ chien().race.name }}</p>
+      <p class="age">{{ chien().age }} ans</p>
+    </div>
+    <div>
+      <p class="caractere">
+        {{ chien().caractere }}
+      </p>
+    </div>
+  </p-card>
   }
 </div>

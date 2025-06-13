@@ -129,7 +129,7 @@ export class FormChienComponent {
       raceId: race.id,
       sexeId: sexe.id,
       caractereIds,
-      ...(isUpdate ?  { id: this.#chien!.id } : {}),
+      ...(isUpdate ? { id: this.#chien!.id } : {}),
     };
 
     this.validate.emit(payload);
