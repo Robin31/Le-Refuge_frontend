@@ -1,11 +1,12 @@
+@let cardChien = chien(); @let image = getImageUrl();
 <div class="card">
-  @if (chien()) {
+  @if (cardChien) {
   <p-card>
-    <img [src]="getImageUrl()" alt="allo" />
+    <img [src]="image" alt="allo" />
     <div class="header">
-      <p class="nom">{{ chien().name }}</p>
-      <p class="race">{{ chien().race.name }}</p>
-      <p class="age">{{ chien().age }} ans</p>
+      <p class="nom">{{ cardChien.name }}</p>
+      <p class="race">{{ cardChien.race.name }}</p>
+      <p class="age">{{ cardChien.age }} ans</p>
     </div>
   </p-card>
   }

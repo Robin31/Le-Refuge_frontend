@@ -1,3 +1,4 @@
+@let term = searchTerm();
 <app-menu></app-menu>
 <app-dashboard-menu></app-dashboard-menu>
 
@@ -11,7 +12,7 @@
       <p-inputgroup-addon>
         <i class="pi pi-search"></i>
       </p-inputgroup-addon>
-      <input pInputText type="search" [value]="searchTerm()" (input)="searchTerm.set($any($event.target).value)" placeholder="Rechercher" />
+      <input pInputText type="search" [value]="term" (input)="searchTerm.set($any($event.target).value)" placeholder="Rechercher" />
     </p-inputgroup>
   </div>
 </div>
