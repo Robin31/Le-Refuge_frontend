@@ -19,7 +19,7 @@
   transition: 1s;
 }
 
-@media (min-width:300px) and (max-width: 660px) {
+@media (min-width: 300px) and (max-width: 660px) {
   .list {
     display: flex;
     flex-direction: column;
@@ -38,7 +38,7 @@
   }
 }
 
-@media (min-width: 660px) and (max-width:980px) {
+@media (min-width: 660px) and (max-width: 980px) {
   .list {
     display: flex;
     gap: 1rem;

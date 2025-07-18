@@ -13,13 +13,20 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { SelectModule } from 'primeng/select';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { FloatLabelModule } from 'primeng/floatlabel';
+import { MessageService } from 'primeng/api';
+import { FileUploadEvent, FileUploadModule } from 'primeng/fileupload';
+import { ToastModule } from 'primeng/toast';
 
+type CustomOriginalEvent = Event & {
+  body?: { fileName: string };
+};
 @Component({
   selector: 'app-form-chien',
   standalone: true,
-  imports: [ReactiveFormsModule, MultiSelectModule, FloatLabelModule, SelectModule, ButtonModule, InputTextModule],
+  imports: [ReactiveFormsModule, ToastModule, FileUploadModule, MultiSelectModule, FloatLabelModule, SelectModule, ButtonModule, InputTextModule],
   templateUrl: './form-chien.component.html',
   styleUrl: './form-chien.component.scss',
+  providers: [MessageService],
 })
 export class FormChienComponent {
   #chien?: Chien | undefined;
@@ -31,6 +38,7 @@ export class FormChienComponent {
 
   @Input() set chien(value: Chien | undefined) {
     this.#chien = value;
+    this.uploadUrl = value?.id ? `http://localhost:8080/chiens/${value.id}/image` : '';
 
     this.chienForm.patchValue({
       name: this.chien?.name ?? '',
@@ -39,7 +47,7 @@ export class FormChienComponent {
       image: this.chien?.image ?? '',
       races: this.getRaceById(this.chien?.race.id),
       sexes: this.getSexeById(this.chien?.sexe.id),
-      caracteres: this.getCaracteresByIds(this.chien?.caractere?.map(c => c.id) ?? []),
+      caracteres: this.getCaracteresByIds(this.chien?.caracteres?.map(c => c.id) ?? []),
       castration: this.chien?.castration ?? null,
     });
   }
@@ -58,10 +66,10 @@ export class FormChienComponent {
     name: new FormControl<string>(this.chien ? this.chien.name : '', Validators.required),
     age: new FormControl<number | null>(this.chien ? this.chien.age : null, [Validators.required, Validators.pattern('^[0-9]*$')]),
     description: new FormControl<string>(this.chien ? this.chien.description : '', Validators.required),
-    image: new FormControl<string>(this.chien ? this.chien.image : '', Validators.required),
+    image: new FormControl<string>(this.chien ? this.chien.image : ''),
     races: new FormControl<Race | null>(this.chien ? this.getRaceById(this.chien?.race.id) : null, Validators.required),
     sexes: new FormControl<Sexe | null>(this.chien ? this.getSexeById(this.chien?.sexe.id) : null, Validators.required),
-    caracteres: new FormControl<Caractere[]>(this.chien ? this.getCaracteresByIds(this.chien?.caractere.map(c => c.id)) : [], Validators.required),
+    caracteres: new FormControl<Caractere[]>(this.chien ? this.getCaracteresByIds(this.chien?.caracteres.map(c => c.id)) : [], Validators.required),
     castration: new FormControl<boolean | null>(this.chien?.castration ?? null, Validators.required),
   });
 
@@ -85,6 +93,30 @@ export class FormChienComponent {
     { label: 'Non', value: false },
   ];
 
+  uploadUrl: string = '';
+
+  constructor(private _messageService: MessageService) {}
+
+  onUploadImage(event: FileUploadEvent): void {
+    const originalEvent = event.originalEvent as unknown as CustomOriginalEvent;
+    const body = originalEvent.body;
+
+    if (body && body.fileName) {
+      this.chienForm.get('image')?.setValue(body.fileName);
+      this._messageService.add({
+        severity: 'success',
+        summary: 'Image',
+        detail: 'Image uploadée avec succès',
+      });
+    } else {
+      this._messageService.add({
+        severity: 'error',
+        summary: 'Erreur',
+        detail: 'Réponse inattendue du serveur',
+      });
+    }
+  }
+
   getRaceById(id: number | undefined): Race | null {
     return this.raceListSignal()?.find(r => r.id === id) ?? null;
   }
@@ -93,9 +125,8 @@ export class FormChienComponent {
     return this.sexeListSignal()?.find(s => s.id === id) ?? null;
   }
 
-  getCaracteresByIds(ids: number[] = []): Caractere[] {
-    const list = this.caractereListSignal() ?? [];
-    return list?.filter(c => ids.includes(c.id));
+  getCaracteresByIds(ids: number[]): Caractere[] {
+    return this.caractereList.filter(c => ids.includes(c.id));
   }
 
   cancelForm(): void {
@@ -112,7 +143,7 @@ export class FormChienComponent {
     const caractere: Caractere[] = this.chienForm.get('caracteres')?.value;
     const castration: boolean = this.chienForm.get('castration')?.value;
 
-    if (!name || age === null || !description || !image || !race || !sexe || !caractere) {
+    if (!name || age === null || !description || !race || !sexe || !caractere) {
       return;
     }
 
@@ -129,7 +160,7 @@ export class FormChienComponent {
       raceId: race.id,
       sexeId: sexe.id,
       caractereIds,
-      ...(isUpdate ?  { id: this.#chien!.id } : {}),
+      ...(isUpdate ? { id: this.#chien!.id } : {}),
     };
 
     this.validate.emit(payload);
