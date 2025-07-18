@@ -58,7 +58,7 @@ export class DashboardChienPageComponent {
   formVisible: boolean = false;
 
   getCaractereList(chien: Chien): string {
-    return chien.caractere.map(c => c.name).join(', ');
+    return chien.caracteres.map(c => c.name).join(', ');
   }
 
   openUpdateForm(chien: Chien): void {

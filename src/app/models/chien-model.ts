@@ -10,7 +10,7 @@ export type Chien = {
   image: string;
   race: Race;
   sexe: Sexe;
-  caractere: Caractere[];
+  caracteres: Caractere[];
   castration: boolean;
 };
 
@@ -18,7 +18,7 @@ export type ChienCreate = {
   name: string;
   age: number;
   description: string;
-  image: string;
+  image?: string;
   castration: boolean;
   raceId: number;
   sexeId: number;

@@ -2,11 +2,25 @@
 
 <div class="list">
   <div class="listChien">
-    @for (chien of chiens();  track $index) {
-      <app-chien-card
-        class="card"
-        [chien]="chien"
-      ></app-chien-card>
+    @for (chien of chiens(); track $index) {
+    <app-chien-card class="card" [chien]="chien" (click)="openChienModal(position, chien)"></app-chien-card>
     }
   </div>
 </div>
+
+<p-dialog
+  [header]="'Chien disponible à l\'adoption'"
+  [dismissableMask]="true"
+  [breakpoints]="{
+    '4500px': '60vw',
+    '2000px': '60vw',
+    '1200px': '80vw',
+    '600px': '100vw'
+  }"
+  [modal]="true"
+  [resizable]="true"
+  [(visible)]="chienVisible">
+  @if (chien()){
+  <app-chien-modal [chien]="chien()"></app-chien-modal>
+  }
+</p-dialog>

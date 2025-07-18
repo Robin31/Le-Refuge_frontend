@@ -71,7 +71,20 @@
   </div>
 
   <div class="button">
+    <p-toast />
+    <p-fileUpload
+      mode="basic"
+      name="image"
+      [url]="uploadUrl"
+      [method]="'put'"
+      accept="image/*"
+      maxFileSize="1000000"
+      (onUpload)="onUploadImage($event)"
+      [auto]="true"
+      chooseLabel="Choisir une image"
+      chooseIcon="pi pi-upload">
+    </p-fileUpload>
     <p-button type="button" (click)="cancelForm()" label="Annuler" />
-    <p-button type="submit" [label]="chien ? 'Modifier' : 'Ajouter'" [disabled]="chienForm.invalid" />
+    <p-button type="submit" [label]="chien ? 'Modifier' : 'Ajouter'" />
   </div>
 </form>
