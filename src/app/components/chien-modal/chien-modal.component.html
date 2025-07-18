@@ -1,7 +1,7 @@
-@let modalChien = chien(); @if (modalChien) {
+@let modalChien = chien(); @let image = imageUrl(); @if (modalChien) {
 <div class="modal">
   <div class="image">
-    <img [src]="imageUrl()" alt="allo" />
+    <img [src]="image" alt="allo" />
   </div>
   <div class="panel">
     <p-panel class="panel-1" header="Caractère(s) :">
