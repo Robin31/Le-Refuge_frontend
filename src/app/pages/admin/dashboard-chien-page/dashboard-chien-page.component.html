@@ -17,7 +17,7 @@
 </div>
 
 <div class="table">
-  <p-table [value]="(chiens$ | async | FilterArray : searchTerm() : 'name')!" [rows]="10" [paginator]="true" [scrollable]="true">
+  <p-table [value]="(chiens$ | async | FilterArray : searchTerm() : 'name')!" [rows]="10" [paginator]="true" [scrollable]="true" scrollHeight="550px">
     <ng-template pTemplate="header">
       <tr>
         <th>Chien</th>
