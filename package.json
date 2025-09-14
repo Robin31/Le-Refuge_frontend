@@ -55,7 +55,7 @@
     "@cypress/schematic": "^2.5.2",
     "@types/jest": "^29.5.14",
     "angular-eslint": "18.4.1",
-    "cypress": "latest",
+    "cypress": "^15.2.0",
     "eslint": "^9.15.0",
     "http-server": "^14.1.1",
     "husky": "^9.1.7",
