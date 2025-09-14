@@ -4,6 +4,8 @@
  */
 
 import type { Config } from 'jest';
+import { pathsToModuleNameMapper } from 'ts-jest';
+import { compilerOptions } from './tsconfig.json';
 
 const config: Config = {
   preset: 'jest-preset-angular',
@@ -11,7 +13,10 @@ const config: Config = {
   testPathIgnorePatterns: ['<rootDir>/cypress/'],
   clearMocks: true,
   coverageDirectory: "coverage",
-  coverageProvider: "v8"
+  coverageProvider: "v8",
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths || {}, { prefix: '<rootDir>/' }),
+  moduleFileExtensions: ['ts', 'js', 'html', 'json'],
 };
+
 
 export default config;

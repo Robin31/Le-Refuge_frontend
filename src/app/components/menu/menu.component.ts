@@ -5,7 +5,7 @@ import { MenuItem } from 'primeng/api';
 import { Menubar } from 'primeng/menubar';
 import { ImageModule } from 'primeng/image';
 import { ButtonModule } from 'primeng/button';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 type SafeMenuItem = {
   label: string | null;

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
-import { environment } from 'src/environments/environment.development';
+import { environment } from '../../environments/environment.development';
 
 type DecodedToken = {
   sub: string;
