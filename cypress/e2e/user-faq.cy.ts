@@ -1,6 +1,5 @@
 describe('Parcours utilisateur - Créer un compte et naviguer', () => {
   beforeEach(() => {
-    // Mock de l’API des FAQs
     cy.intercept('POST', '**/auth/register').as('register');
     cy.intercept('POST', '**/auth/login').as('login');
     cy.intercept('GET', '**/faqs').as('getFaqs');
