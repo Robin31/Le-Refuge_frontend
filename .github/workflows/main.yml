@@ -5,13 +5,13 @@ on:
     branches:
       - '**'
     branches-ignore:
-    - development
+    - developement
     - staging
     - production
 
   pull_request:
     branches:
-      - development
+      - developement
       - staging
       - production
 
