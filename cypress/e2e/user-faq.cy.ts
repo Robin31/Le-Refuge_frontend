@@ -7,7 +7,9 @@ describe('Parcours utilisateur - Créer un compte et naviguer', () => {
   });
 
   it('devrait créer un compte, visiter FAQ puis page Chiens', () => {
-    cy.visit('/signup');
+    cy.visit('/');
+
+    cy.contains("Créer un compte").click();
 
     const email = `test${Date.now()}@test.com`;
     cy.get('#email').type(email);
@@ -16,7 +18,7 @@ describe('Parcours utilisateur - Créer un compte et naviguer', () => {
 
     cy.contains("S'enregistrer").click();
 
-    cy.wait('@register');
+    cy.wait('@register',);
     cy.wait('@login');
 
     cy.window().then(win => {
@@ -28,9 +30,10 @@ describe('Parcours utilisateur - Créer un compte et naviguer', () => {
     cy.wait('@getFaqs');
     cy.url().should('include', '/faq');
 
-    cy.contains('En quoi abandonné son chien en foret est mal ?', { timeout: 10000 }).should('exist');
+    cy.contains('Aled', { timeout: 10000 }).should('exist');
 
-    cy.visit('/chiens');
+    cy.contains('Nos chiens').click();
+    cy.wait('@getChiens');
     cy.url().should('include', '/chiens');
 
     cy.get('app-chien-card').first().click();

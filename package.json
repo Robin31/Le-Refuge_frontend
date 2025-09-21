@@ -16,7 +16,7 @@
     "test:watch": "jest --watch",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "start-server": "npx http-server dist/frontend/browser -p 4200 --spa",
+    "start-server": "npx http-server dist/frontend/browser -p 4200",
     "e2e:ui": "./scripts/env-scripts/e2e-ui-with-env.sh $npm_config_env",
     "e2e:ui:staging": "npm run e2e:ui --env=staging",
     "e2e:ui:production": "npm run e2e:ui --env=production",
