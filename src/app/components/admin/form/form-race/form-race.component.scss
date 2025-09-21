@@ -1,0 +1,11 @@
+.form-race {
+  display: grid;
+  flex-direction: column;
+  width: 100%;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.button {
+  justify-self: center;
+}

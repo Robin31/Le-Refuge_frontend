@@ -1,0 +1,9 @@
+<app-menu></app-menu>
+
+<h1>Foire à questions</h1>
+
+<div>
+  @for (faq of faqs; track $index) {
+  <app-faq-card [question]="faq.question" [answer]="faq.answer"></app-faq-card>
+  }
+</div>

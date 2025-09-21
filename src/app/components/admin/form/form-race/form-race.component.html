@@ -1,0 +1,10 @@
+<form [formGroup]="raceForm" (ngSubmit)="submit()">
+  <div class="form-race">
+    <div class="race">
+      <input type="text" pInputText formControlName="name" placeholder="race" />
+    </div>
+    <div class="button">
+      <p-button type="submit" [label]="race ? 'Modifier' : 'Ajouter'" [disabled]="raceForm.invalid" />
+    </div>
+  </div>
+</form>

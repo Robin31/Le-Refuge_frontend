@@ -1,0 +1,13 @@
+<form [formGroup]="faqForm" (ngSubmit)="submit()">
+  <div class="form-faq">
+    <div class="question">
+      <input type="text" pInputText formControlName="question" placeholder="Question" />
+    </div>
+    <div class="answer">
+      <input type="text" pInputText formControlName="answer" placeholder="Reponse" />
+    </div>
+    <div class="button">
+      <p-button type="submit" [label]="faq ? 'Modifier' : 'Ajouter'" [disabled]="faqForm.invalid" />
+    </div>
+  </div>
+</form>

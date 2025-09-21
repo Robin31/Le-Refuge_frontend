@@ -1,0 +1,13 @@
+<p-card (click)="toggleAnswer()" class="faq-question" ngStyle="{ 'margin-top': '10rem'}">
+  <ng-template pTemplate="content">
+    <span>{{ question }}</span>
+  </ng-template>
+</p-card>
+
+@if (isOpen) {
+<p-card class="faq-answer">
+  <ng-template pTemplate="content">
+    {{ answer }}
+  </ng-template>
+</p-card>
+}
