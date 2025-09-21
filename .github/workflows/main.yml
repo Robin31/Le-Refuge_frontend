@@ -4,10 +4,9 @@ on:
   push:
     branches:
       - '**'
-    branches-ignore:
-    - developement
-    - staging
-    - production
+      - developement
+      - staging
+      - production
 
   pull_request:
     branches:
